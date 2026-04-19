@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PawFinder — Meet Your New Bestie 🐾</title>
+  <meta name="description" content="PawFinder connects you with rescue pets who are literally perfect. Browse adorable dogs, cats, birds & bunnies ready for their forever home.">
+  <meta name="keywords" content="pet adoption, adopt a pet, dogs, cats, animal shelter, rescue pets">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='80' font-size='80'>🐾</text></svg>">
+</head>
+<body data-theme="dark">
+
+  <!-- ======== NAVIGATION ======== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#" class="nav-logo">
+        <div class="logo-icon">🐾</div>
+        <span>PawFinder</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#hero">Home</a>
+        <a href="#pets">Pets</a>
+        <a href="#donate">Donate Pet</a>
+        <a href="#plans">Plans</a>
+        <a href="#testimonials">Stories</a>
+        <a href="#newsletter" class="nav-cta">Adopt Now 🔥</a>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span class="theme-icon" id="themeIcon">🌙</span>
+      </button>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ======== HERO ======== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          500+ pets found their people this month ✨
+        </div>
+        <h1>Meet Your New<br><span class="gradient-text">Bestie</span></h1>
+        <p>Every rescue pet deserves a second chance — and honestly, they'll probably change your life more than you change theirs. Find your perfect match.</p>
+        <div class="hero-actions">
+          <a href="#pets" class="btn-primary">
+            Find Your Match <span>→</span>
+          </a>
+          <a href="#how-it-works" class="btn-secondary">
+            <span>👀</span> See How It Works
+          </a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="hero-image-wrapper">
+          <img src="images/golden_retriever.png" alt="Adorable golden retriever puppy" id="heroImage">
+
+          <div class="hero-float-badge float-badge-1">
+            <div class="badge-icon">✅</div>
+            <div>
+              <div class="badge-text">Vet Approved</div>
+              <div class="badge-value">Health Checked</div>
+            </div>
+          </div>
+
+          <div class="hero-float-badge float-badge-2">
+            <div class="badge-icon">💜</div>
+            <div>
+              <div class="badge-text">This week</div>
+              <div class="badge-value">42 Found Home</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== STATS ======== -->
+  <section class="stats fade-in" id="stats">
+    <div class="container">
+      <div class="stat-item">
+        <div class="stat-number" data-target="3250">0</div>
+        <div class="stat-label">Pets Adopted</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-target="2800">0</div>
+        <div class="stat-label">Happy Families</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-target="120">0</div>
+        <div class="stat-label">Partner Shelters</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-target="50">0</div>
+        <div class="stat-label">Cities Covered</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== PETS ======== -->
+  <section class="pets-section" id="pets">
+    <div class="container">
+      <div class="section-heading fade-in">
+        <div class="label">Your Future Bestie</div>
+        <h2>These Cuties Need a Home</h2>
+        <p>Every single one of them has been rescued, vet-checked, and is literally ready to make your life 10x better.</p>
+      </div>
+
+      <div class="filter-tabs fade-in" id="filterTabs">
+        <button class="filter-tab active" data-filter="all">🐾 All Pets</button>
+        <button class="filter-tab" data-filter="dog">🐶 Dogs</button>
+        <button class="filter-tab" data-filter="cat">🐱 Cats</button>
+        <button class="filter-tab" data-filter="bird">🐦 Birds</button>
+        <button class="filter-tab" data-filter="rabbit">🐰 Rabbits</button>
+      </div>
+
+      <div class="pet-grid" id="petGrid">
+        <!-- Pet cards rendered by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== HOW IT WORKS ======== -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-heading fade-in">
+        <div class="label">The Vibe Check</div>
+        <h2>How Adoption Works</h2>
+        <p>We made this super easy — no cap. Three simple steps and you'll have a new bestie at home.</p>
+      </div>
+
+      <div class="steps-grid fade-in">
+        <div class="step-card">
+          <div class="step-icon">
+            🔍
+            <div class="step-number">1</div>
+          </div>
+          <h3>Browse & Vibe</h3>
+          <p>Scroll through our gallery of adorable rescues. Filter by type to find someone who matches your energy.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-icon">
+            🤝
+            <div class="step-number">2</div>
+          </div>
+          <h3>Meet & Connect</h3>
+          <p>Schedule a visit and meet your potential new family member IRL. We'll help you find the perfect match.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-icon">
+            🏠
+            <div class="step-number">3</div>
+          </div>
+          <h3>Adopt & Thrive</h3>
+          <p>Fill out the adoption form, and boom — your new bestie comes home. Welcome to the PawFinder fam! 🎉</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== TESTIMONIALS ======== -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-heading fade-in">
+        <div class="label">Real Ones Share</div>
+        <h2>Adoption Success Stories</h2>
+        <p>Don't just take our word for it — hear from families who found their perfect match through PawFinder.</p>
+      </div>
+
+      <div class="testimonial-track-wrapper fade-in">
+        <div class="testimonial-track" id="testimonialTrack">
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Adopting Max was the best decision our family ever made. The process was so smooth, and the PawFinder team was incredibly supportive. Max has brought so much joy to our lives!"</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">S</div>
+              <div>
+                <div class="testimonial-author-name">Sarah Mitchell</div>
+                <div class="testimonial-author-detail">Adopted Max, Golden Retriever</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"We were nervous about adopting, but PawFinder made everything easy. Our cat Luna is the sweetest thing — she fit right in from day one. Thank you for matching us!"</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">J</div>
+              <div>
+                <div class="testimonial-author-name">James & Emily Chen</div>
+                <div class="testimonial-author-detail">Adopted Luna, Siamese Cat</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"As a first-time pet owner, I had lots of questions. The PawFinder team guided me every step of the way. Kiwi, my little parakeet, is now my daily source of happiness!"</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">P</div>
+              <div>
+                <div class="testimonial-author-name">Priya Sharma</div>
+                <div class="testimonial-author-detail">Adopted Kiwi, Parakeet</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Our rescue beagle Daisy was shy at first, but within a week she was the queen of the house. There's nothing more rewarding than seeing a rescue pet blossom with love."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">M</div>
+              <div>
+                <div class="testimonial-author-name">Michael Torres</div>
+                <div class="testimonial-author-detail">Adopted Daisy, Beagle</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"We adopted Snowball for our daughter's birthday, and it was the best gift ever. He's the most gentle rabbit, and our whole family adores him. PawFinder is amazing!"</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">A</div>
+              <div>
+                <div class="testimonial-author-name">Anna & David Lee</div>
+                <div class="testimonial-author-detail">Adopted Snowball, Holland Lop</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-nav fade-in">
+        <button id="testimonialPrev" aria-label="Previous testimonial">←</button>
+        <button id="testimonialNext" aria-label="Next testimonial">→</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== DONATE YOUR PET ======== -->
+  <section class="donate-section" id="donate">
+    <div class="container">
+      <div class="section-heading fade-in">
+        <div class="label">Give Them a New Home</div>
+        <h2>Rehome Your Pet — <span class="gradient-text">No Middleman</span></h2>
+        <p>Life happens. If you can't keep your pet, list them directly and connect with verified adopters — no agents, no fees, just love.</p>
+      </div>
+      <div class="donate-card fade-in">
+        <div class="donate-features">
+          <div class="donate-feature">
+            <div class="donate-feature-icon">🤝</div>
+            <h4>Direct Connection</h4>
+            <p>Connect directly with adopters — no middlemen involved.</p>
+          </div>
+          <div class="donate-feature">
+            <div class="donate-feature-icon">🛡️</div>
+            <h4>Verified Adopters</h4>
+            <p>Every adopter goes through our verification process.</p>
+          </div>
+          <div class="donate-feature">
+            <div class="donate-feature-icon">💸</div>
+            <h4>100% Free</h4>
+            <p>No listing fees, no commissions. Completely free.</p>
+          </div>
+        </div>
+        <button class="btn-primary donate-cta" id="openDonateModal">List Your Pet for Rehoming 🐾</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== SUBSCRIPTION PLANS ======== -->
+  <section class="plans-section" id="plans">
+    <div class="container">
+      <div class="section-heading fade-in">
+        <div class="label">Upgrade Your Experience</div>
+        <h2>Choose Your <span class="gradient-text">Plan</span></h2>
+        <p>Get premium features, priority matching, and exclusive perks. Cancel anytime.</p>
+      </div>
+      <div class="plans-grid fade-in">
+        <div class="plan-card">
+          <div class="plan-badge">Free</div>
+          <div class="plan-price">₹0<span>/forever</span></div>
+          <div class="plan-name">PawBasic</div>
+          <ul class="plan-features">
+            <li>✅ Browse all pets</li>
+            <li>✅ Submit adoption applications</li>
+            <li>✅ Rehome your pet</li>
+            <li>✅ Email notifications</li>
+            <li>❌ Priority matching</li>
+            <li>❌ Vet consultation</li>
+          </ul>
+          <button class="plan-btn" onclick="alert('You are on the Free plan!')">Current Plan</button>
+        </div>
+        <div class="plan-card popular">
+          <div class="plan-popular-tag">Most Popular 🔥</div>
+          <div class="plan-badge">Pro</div>
+          <div class="plan-price">₹299<span>/month</span></div>
+          <div class="plan-name">PawPlus</div>
+          <ul class="plan-features">
+            <li>✅ Everything in Free</li>
+            <li>✅ Priority matching queue</li>
+            <li>✅ 1 free vet consultation/month</li>
+            <li>✅ Adoption history tracking</li>
+            <li>✅ Early access to new listings</li>
+            <li>✅ Profile badge ⭐</li>
+          </ul>
+          <button class="plan-btn primary" onclick="alert('PawPlus subscription coming soon!')">Get PawPlus</button>
+        </div>
+        <div class="plan-card">
+          <div class="plan-badge">Premium</div>
+          <div class="plan-price">₹599<span>/month</span></div>
+          <div class="plan-name">PawPro</div>
+          <ul class="plan-features">
+            <li>✅ Everything in PawPlus</li>
+            <li>✅ Unlimited vet consultations</li>
+            <li>✅ Home visit scheduling</li>
+            <li>✅ Pet insurance discounts</li>
+            <li>✅ Dedicated support agent</li>
+            <li>✅ Premium badge 👑</li>
+          </ul>
+          <button class="plan-btn" onclick="alert('PawPro subscription coming soon!')">Get PawPro</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== NEWSLETTER ======== -->
+  <section class="newsletter" id="newsletter">
+    <div class="container">
+      <div class="newsletter-card fade-in">
+        <h2>Ready to Find Your<br><span class="gradient-text">Perfect Match?</span></h2>
+        <p>Get the latest on new rescues, adoption tips, and heartwarming success stories — straight to your inbox.</p>
+        <form class="newsletter-form" id="newsletterForm">
+          <input type="email" placeholder="Enter your email address" required id="newsletterEmail">
+          <button type="submit">I'm In ✨</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== FOOTER ======== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo">
+            <div class="logo-icon">🐾</div>
+            <span>PawFinder</span>
+          </a>
+          <p>Connecting loving homes with rescue pets since 2020. Every adoption is a new beginning — for both of you.</p>
+          <div class="footer-socials">
+            <a href="#" aria-label="Twitter">𝕏</a>
+            <a href="#" aria-label="Instagram">📷</a>
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="YouTube">▶</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#pets">All Pets</a></li>
+            <li><a href="#">Dogs</a></li>
+            <li><a href="#">Cats</a></li>
+            <li><a href="#">Birds & Others</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">Adoption Guide</a></li>
+            <li><a href="#">Pet Care Tips</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Partner Shelters</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 PawFinder. All rights reserved. Made with 💜 for pets everywhere.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======== PET DETAIL MODAL ======== -->
+  <div class="modal-overlay" id="petModal">
+    <div class="modal">
+      <button class="modal-close" id="modalClose" aria-label="Close modal">✕</button>
+      <img class="modal-image" id="modalImage" src="" alt="">
+      <div class="modal-body">
+        <div class="modal-header">
+          <div>
+            <h2 class="modal-name" id="modalName"></h2>
+            <p class="modal-breed" id="modalBreed"></p>
+          </div>
+          <div class="modal-price" id="modalPrice"></div>
+        </div>
+        <div class="modal-tags" id="modalTags"></div>
+        <p class="modal-description" id="modalDescription"></p>
+        <div class="modal-traits" id="modalTraits"></div>
+        <button class="modal-adopt-btn" id="modalAdoptBtn">
+          💜 Start Adoption Process
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======== AUTH MODAL (Login / Signup) ======== -->
+  <div class="auth-overlay" id="authOverlay">
+    <div class="auth-modal">
+      <button class="auth-modal-close" id="authClose" aria-label="Close">✕</button>
+      <div class="auth-header">
+        <div class="logo-icon">🐾</div>
+        <h2 id="authTitle">Welcome Back</h2>
+        <p id="authSubtitle">Sign in to start the adoption process</p>
+      </div>
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="login" id="tabLogin">Sign In</button>
+        <button class="auth-tab" data-tab="signup" id="tabSignup">Create Account</button>
+      </div>
+      <div class="auth-body">
+        <!-- Login Form -->
+        <form class="auth-form" id="loginForm">
+          <div class="form-group">
+            <label for="loginEmail">Email Address</label>
+            <input type="email" class="form-input" id="loginEmail" placeholder="you@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Password</label>
+            <input type="password" class="form-input" id="loginPassword" placeholder="••••••••" required>
+          </div>
+          <button type="submit" class="form-btn">Sign In →</button>
+          <div class="form-divider">or</div>
+          <button type="button" class="form-btn secondary" id="googleLoginBtn">🔍 Continue with Google</button>
+        </form>
+        <!-- Signup Form (hidden by default) -->
+        <form class="auth-form" id="signupForm" style="display:none;">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="signupFirst">First Name</label>
+              <input type="text" class="form-input" id="signupFirst" placeholder="John" required>
+            </div>
+            <div class="form-group">
+              <label for="signupLast">Last Name</label>
+              <input type="text" class="form-input" id="signupLast" placeholder="Doe" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="signupEmail">Email Address</label>
+            <input type="email" class="form-input" id="signupEmail" placeholder="you@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="signupPhone">Phone Number</label>
+            <input type="tel" class="form-input" id="signupPhone" placeholder="+1 (555) 000-0000" required>
+          </div>
+          <div class="form-group">
+            <label for="signupPassword">Create Password</label>
+            <input type="password" class="form-input" id="signupPassword" placeholder="Min 8 characters" required minlength="8">
+          </div>
+          <button type="submit" class="form-btn">Create Account →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======== ADOPTION FORM MODAL ======== -->
+  <div class="adoption-overlay" id="adoptionOverlay">
+    <div class="adoption-modal">
+      <button class="adoption-modal-close" id="adoptionClose" aria-label="Close">✕</button>
+      
+      <div class="adoption-header">
+        <div class="adoption-pet-info" id="adoptionPetInfo">
+          <img src="" alt="" id="adoptionPetImg">
+          <div>
+            <div class="pet-name" id="adoptionPetName"></div>
+            <div class="pet-detail" id="adoptionPetDetail"></div>
+          </div>
+        </div>
+
+        <div class="form-stepper" id="formStepper">
+          <div class="stepper-step">
+            <div class="step-circle active" data-step="1">1</div>
+          </div>
+          <div class="step-line" id="line1"></div>
+          <div class="stepper-step">
+            <div class="step-circle" data-step="2">2</div>
+          </div>
+          <div class="step-line" id="line2"></div>
+          <div class="stepper-step">
+            <div class="step-circle" data-step="3">3</div>
+          </div>
+        </div>
+        <div class="stepper-labels">
+          <div class="stepper-label active">Personal Info</div>
+          <div class="stepper-label">Living Situation</div>
+          <div class="stepper-label">Experience</div>
+        </div>
+      </div>
+
+      <div class="adoption-body">
+        <form class="adoption-form" id="adoptionForm">
+          <!-- Step 1: Personal Information -->
+          <div class="form-step active" data-step="1">
+            <h3>📋 Personal Information</h3>
+            <p>Tell us a bit about yourself so we can process your adoption application.</p>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="adopterFirstName">First Name *</label>
+                <input type="text" class="form-input" id="adopterFirstName" placeholder="John" required>
+              </div>
+              <div class="form-group">
+                <label for="adopterLastName">Last Name *</label>
+                <input type="text" class="form-input" id="adopterLastName" placeholder="Doe" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="adopterEmail">Email Address *</label>
+              <input type="email" class="form-input" id="adopterEmail" placeholder="john@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="adopterPhone">Phone Number *</label>
+              <input type="tel" class="form-input" id="adopterPhone" placeholder="+1 (555) 000-0000" required>
+            </div>
+            <div class="form-group">
+              <label for="adopterAddress">Full Address *</label>
+              <input type="text" class="form-input" id="adopterAddress" placeholder="123 Main St, City, State, ZIP" required>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="adopterAge">Your Age *</label>
+                <input type="number" class="form-input" id="adopterAge" placeholder="25" min="18" required>
+              </div>
+              <div class="form-group">
+                <label for="adopterOccupation">Occupation</label>
+                <input type="text" class="form-input" id="adopterOccupation" placeholder="Software Engineer">
+              </div>
+            </div>
+            <div class="form-actions">
+              <button type="button" class="form-btn" onclick="nextStep(2)">Continue →</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Living Situation -->
+          <div class="form-step" data-step="2">
+            <h3>🏠 Living Situation</h3>
+            <p>Help us understand your home environment to ensure a good match.</p>
+            <div class="form-group">
+              <label>Housing Type *</label>
+              <div class="radio-group">
+                <div class="radio-option">
+                  <input type="radio" name="housing" id="housingHouse" value="house" required>
+                  <label for="housingHouse">🏡 House</label>
+                </div>
+                <div class="radio-option">
+                  <input type="radio" name="housing" id="housingApt" value="apartment">
+                  <label for="housingApt">🏢 Apartment</label>
+                </div>
+                <div class="radio-option">
+                  <input type="radio" name="housing" id="housingOther" value="other">
+                  <label for="housingOther">🏘️ Other</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Do you own or rent? *</label>
+              <div class="radio-group">
+                <div class="radio-option">
+                  <input type="radio" name="ownership" id="ownHome" value="own" required>
+                  <label for="ownHome">Own</label>
+                </div>
+                <div class="radio-option">
+                  <input type="radio" name="ownership" id="rentHome" value="rent">
+                  <label for="rentHome">Rent</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Do you have a yard?</label>
+              <div class="radio-group">
+                <div class="radio-option">
+                  <input type="radio" name="yard" id="yardYes" value="yes">
+                  <label for="yardYes">✅ Yes</label>
+                </div>
+                <div class="radio-option">
+                  <input type="radio" name="yard" id="yardNo" value="no">
+                  <label for="yardNo">❌ No</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="numAdults">Adults in Home *</label>
+                <input type="number" class="form-input" id="numAdults" placeholder="2" min="1" required>
+              </div>
+              <div class="form-group">
+                <label for="numChildren">Children in Home</label>
+                <input type="number" class="form-input" id="numChildren" placeholder="0" min="0">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="childrenAges">Children's Ages (if any)</label>
+              <input type="text" class="form-input" id="childrenAges" placeholder="e.g. 5, 8, 12">
+            </div>
+            <div class="form-actions">
+              <button type="button" class="form-btn secondary" onclick="prevStep(1)">← Back</button>
+              <button type="button" class="form-btn" onclick="nextStep(3)">Continue →</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Pet Experience & References -->
+          <div class="form-step" data-step="3">
+            <h3>🐾 Experience & References</h3>
+            <p>Tell us about your experience with pets and provide a reference.</p>
+            <div class="form-group">
+              <label>Have you owned a pet before? *</label>
+              <div class="radio-group">
+                <div class="radio-option">
+                  <input type="radio" name="petExp" id="expYes" value="yes" required>
+                  <label for="expYes">Yes</label>
+                </div>
+                <div class="radio-option">
+                  <input type="radio" name="petExp" id="expNo" value="no">
+                  <label for="expNo">No, First Time</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="currentPets">Current Pets (if any)</label>
+              <input type="text" class="form-input" id="currentPets" placeholder="e.g. 1 cat, 2 fish">
+            </div>
+            <div class="form-group">
+              <label for="hoursAlone">Hours pet will be alone daily *</label>
+              <select class="form-input" id="hoursAlone" required>
+                <option value="" disabled selected>Select hours</option>
+                <option value="0-2">0 – 2 hours</option>
+                <option value="2-4">2 – 4 hours</option>
+                <option value="4-6">4 – 6 hours</option>
+                <option value="6-8">6 – 8 hours</option>
+                <option value="8+">8+ hours</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="vetName">Veterinarian Name & Clinic (if applicable)</label>
+              <input type="text" class="form-input" id="vetName" placeholder="Dr. Smith — Happy Paws Vet Clinic">
+            </div>
+            <div class="form-group">
+              <label for="referenceName">Personal Reference Name *</label>
+              <input type="text" class="form-input" id="referenceName" placeholder="Jane Smith" required>
+            </div>
+            <div class="form-group">
+              <label for="referencePhone">Reference Phone *</label>
+              <input type="tel" class="form-input" id="referencePhone" placeholder="+1 (555) 000-0000" required>
+            </div>
+            <div class="form-group">
+              <label for="whyAdopt">Why do you want to adopt this pet? *</label>
+              <textarea class="form-input" id="whyAdopt" placeholder="Tell us about your motivation and how you'll care for this pet..." required></textarea>
+            </div>
+            <div class="form-actions">
+              <button type="button" class="form-btn secondary" onclick="prevStep(2)">← Back</button>
+              <button type="submit" class="form-btn">Submit Application 🎉</button>
+            </div>
+          </div>
+        </form>
+
+        <!-- Success State -->
+        <div class="adoption-success" id="adoptionSuccess">
+          <div class="success-icon">🎉</div>
+          <h2>Application Submitted!</h2>
+          <p>Thank you for your interest in adoption! Our team will review your application and contact you within 2–3 business days to schedule a meet-and-greet.</p>
+          <button class="form-btn" onclick="closeAdoptionModal()" style="max-width: 240px; margin: 0 auto;">Back to Browsing</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======== DONATE PET MODAL ======== -->
+  <div class="donate-overlay" id="donateOverlay">
+    <div class="donate-modal">
+      <button class="donate-modal-close" id="donateClose" aria-label="Close">✕</button>
+      <div class="donate-modal-header">
+        <div class="logo-icon">🐾</div>
+        <h2>Rehome Your Pet</h2>
+        <p>Fill in your pet's details and we'll connect you with verified adopters.</p>
+      </div>
+      <div class="donate-modal-body">
+        <form class="donate-form" id="donateForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="donatePetName">Pet Name *</label>
+              <input type="text" class="form-input" id="donatePetName" placeholder="e.g. Buddy" required>
+            </div>
+            <div class="form-group">
+              <label for="donatePetType">Pet Type *</label>
+              <select class="form-input" id="donatePetType" required>
+                <option value="" disabled selected>Select type</option>
+                <option value="dog">🐶 Dog</option>
+                <option value="cat">🐱 Cat</option>
+                <option value="bird">🐦 Bird</option>
+                <option value="rabbit">🐰 Rabbit</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="donatePetBreed">Breed *</label>
+              <input type="text" class="form-input" id="donatePetBreed" placeholder="e.g. Indian Pariah" required>
+            </div>
+            <div class="form-group">
+              <label for="donatePetAge">Age *</label>
+              <input type="text" class="form-input" id="donatePetAge" placeholder="e.g. 2 years" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Gender *</label>
+              <div class="radio-group">
+                <div class="radio-option"><input type="radio" name="donateGender" id="donateMale" value="male" required><label for="donateMale">♂ Male</label></div>
+                <div class="radio-option"><input type="radio" name="donateGender" id="donateFemale" value="female"><label for="donateFemale">♀ Female</label></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="donatePetSize">Size *</label>
+              <select class="form-input" id="donatePetSize" required>
+                <option value="" disabled selected>Select size</option>
+                <option value="Small">Small</option>
+                <option value="Medium">Medium</option>
+                <option value="Large">Large</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="donatePetDesc">Tell us about your pet *</label>
+            <textarea class="form-input" id="donatePetDesc" placeholder="Describe your pet's personality, habits, and why you're rehoming..." required></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="donateOwnerName">Your Name *</label>
+              <input type="text" class="form-input" id="donateOwnerName" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+              <label for="donateOwnerPhone">Your Phone *</label>
+              <input type="tel" class="form-input" id="donateOwnerPhone" placeholder="+91 98765 43210" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="donateOwnerCity">City *</label>
+            <input type="text" class="form-input" id="donateOwnerCity" placeholder="Mumbai, Delhi, Bangalore..." required>
+          </div>
+          <button type="submit" class="form-btn">Submit Listing 🐾</button>
+        </form>
+        <div class="donate-success" id="donateSuccess">
+          <div class="success-icon">🎉</div>
+          <h2>Pet Listed!</h2>
+          <p>Your pet has been listed for rehoming. We'll notify verified adopters in your area. You'll be contacted directly — no middlemen!</p>
+          <button class="form-btn" onclick="closeDonateModal()">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js?v=3"></script>
+</body>
+</html>
