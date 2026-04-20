@@ -14,7 +14,7 @@ const pets = [
     gender: "male",
     size: "Large",
     image: "images/golden_retriever.png",
-    fee: "$150",
+    fee: "₹7,500",
     description: "Buddy is a joyful and energetic Golden Retriever who loves nothing more than playing fetch and cuddling on the couch. He's great with kids and other pets, making him the perfect family companion. Buddy is fully trained, house-broken, and eager to please.",
     traits: [
       { icon: "📏", label: "Size", value: "Large" },
@@ -35,7 +35,7 @@ const pets = [
     gender: "female",
     size: "Large",
     image: "images/husky.png",
-    fee: "$175",
+    fee: "₹8,500",
     description: "Luna is a stunning Siberian Husky with piercing blue eyes and a loving personality. She's an adventurous spirit who loves long walks and snowy weather. Luna is loyal, intelligent, and would thrive with an active owner who enjoys the outdoors.",
     traits: [
       { icon: "📏", label: "Size", value: "Large" },
@@ -56,7 +56,7 @@ const pets = [
     gender: "male",
     size: "Medium",
     image: "images/orange_cat.png",
-    fee: "$100",
+    fee: "₹3,000",
     description: "Milo is a charming orange tabby with the most soothing purr you've ever heard. He's a lap cat through and through — give him a warm spot and some gentle pets, and he's the happiest cat alive. Milo is litter-trained and gets along well with other cats.",
     traits: [
       { icon: "📏", label: "Size", value: "Medium" },
@@ -77,7 +77,7 @@ const pets = [
     gender: "male",
     size: "Medium",
     image: "images/black_cat.png",
-    fee: "$90",
+    fee: "₹2,500",
     description: "Shadow is a sleek and mysterious black cat with golden eyes that glow in the light. Don't let his enigmatic appearance fool you — he's a total sweetheart who loves chin scratches and chasing laser pointers. Shadow is independent yet affectionate.",
     traits: [
       { icon: "📏", label: "Size", value: "Medium" },
@@ -98,7 +98,7 @@ const pets = [
     gender: "male",
     size: "Small",
     image: "images/parakeet.png",
-    fee: "$50",
+    fee: "₹1,500",
     description: "Kiwi is a vibrant green parakeet full of personality and song. He loves to chirp along to music and can even mimic a few words! Kiwi is hand-tamed and enjoys sitting on shoulders. He'd make a wonderful companion for bird lovers of all ages.",
     traits: [
       { icon: "📏", label: "Size", value: "Small" },
@@ -119,7 +119,7 @@ const pets = [
     gender: "female",
     size: "Small",
     image: "images/bunny.png",
-    fee: "$60",
+    fee: "₹2,000",
     description: "Snowball is an adorable Holland Lop rabbit with soft white fur and floppy ears that will melt your heart. She's gentle, curious, and loves to explore. Snowball enjoys being held and is perfect for families looking for a calm and cuddly pet.",
     traits: [
       { icon: "📏", label: "Size", value: "Small" },
@@ -140,7 +140,7 @@ const pets = [
     gender: "female",
     size: "Medium",
     image: "images/beagle.png",
-    fee: "$130",
+    fee: "₹5,500",
     description: "Daisy is a sweet and curious Beagle with an incredible nose and an even bigger heart. She loves sniffing out adventures on walks and then coming home for belly rubs. Daisy is great with children and enjoys the company of other dogs.",
     traits: [
       { icon: "📏", label: "Size", value: "Medium" },
@@ -161,7 +161,7 @@ const pets = [
     gender: "female",
     size: "Medium",
     image: "images/siamese_cat.png",
-    fee: "$120",
+    fee: "₹4,500",
     description: "Cleo is an elegant Siamese cat with striking blue eyes and a vocal personality. She loves conversation — expect plenty of meows and purrs! Cleo is incredibly smart, loves puzzle toys, and forms deep bonds with her humans.",
     traits: [
       { icon: "📏", label: "Size", value: "Medium" },
@@ -203,7 +203,7 @@ const pets = [
     gender: "female",
     size: "Small",
     image: "images/indian_spitz.png",
-    fee: "₹800",
+    fee: "₹2,500",
     description: "Meera is an adorable Indian Spitz with a fluffy white coat and the most playful personality. She looks like a little cloud bouncing around! Meera is perfect for apartment living, loves to play fetch, and is incredibly smart — she already knows 'sit', 'shake', and 'roll over'. She's basically a professional cutie.",
     traits: [
       { icon: "📏", label: "Size", value: "Small" },
@@ -224,7 +224,7 @@ const pets = [
     gender: "male",
     size: "Medium",
     image: "images/indie_cat.png",
-    fee: "₹400",
+    fee: "₹1,000",
     description: "Simba is a gorgeous Indie cat with striking tabby markings and golden-green eyes. He's the king of naps and the ruler of cardboard boxes. Simba is super chill during the day but turns into a playful goofball at night. He's been rescued from the streets and is ready to rule his forever home.",
     traits: [
       { icon: "📏", label: "Size", value: "Medium" },
@@ -245,7 +245,7 @@ const pets = [
     gender: "male",
     size: "Small",
     image: "images/indian_ringneck.png",
-    fee: "₹600",
+    fee: "₹2,000",
     description: "Chiku is a stunning Indian Ringneck Parakeet with vibrant green plumage and the signature rose ring around his neck. He's a total character — loves chatting, can mimic over 10 words, and dances when he hears Bollywood music. Chiku is hand-tamed and thrives on social interaction.",
     traits: [
       { icon: "📏", label: "Size", value: "Small" },
@@ -483,11 +483,19 @@ function updateTestimonialPosition() {
   const cards = testimonialTrack.querySelectorAll('.testimonial-card');
   if (cards.length === 0) return;
   
-  const cardWidth = cards[0].offsetWidth + 24; // card width + gap
-  const maxIndex = Math.max(0, cards.length - Math.floor(testimonialTrack.parentElement.offsetWidth / cardWidth));
+  const cardWidth = cards[0].offsetWidth + 28; // card width + gap
+  const wrapperWidth = testimonialTrack.parentElement.offsetWidth;
+  const visibleCards = Math.max(1, Math.floor(wrapperWidth / cardWidth));
+  const maxIndex = Math.max(0, cards.length - visibleCards);
   
   testimonialIndex = Math.max(0, Math.min(testimonialIndex, maxIndex));
-  testimonialTrack.style.transform = `translateX(-${testimonialIndex * cardWidth}px)`;
+  
+  // Center the active card(s) within the wrapper
+  const totalTrackWidth = cards.length * cardWidth - 28;
+  const activeOffset = testimonialIndex * cardWidth;
+  const centerOffset = Math.max(0, (wrapperWidth - (visibleCards * cardWidth - 28)) / 2);
+  
+  testimonialTrack.style.transform = `translateX(-${activeOffset - centerOffset}px)`;
 }
 
 if (testimonialPrev) {
@@ -507,7 +515,10 @@ if (testimonialNext) {
 // Auto-scroll testimonials
 let autoScrollInterval = setInterval(() => {
   const cards = testimonialTrack ? testimonialTrack.querySelectorAll('.testimonial-card') : [];
-  const maxIndex = Math.max(0, cards.length - 1);
+  const wrapperWidth = testimonialTrack ? testimonialTrack.parentElement.offsetWidth : 0;
+  const cardWidth = cards.length > 0 ? cards[0].offsetWidth + 28 : 380;
+  const visibleCards = Math.max(1, Math.floor(wrapperWidth / cardWidth));
+  const maxIndex = Math.max(0, cards.length - visibleCards);
   
   testimonialIndex++;
   if (testimonialIndex > maxIndex) testimonialIndex = 0;
@@ -523,7 +534,10 @@ if (testimonialTrack) {
   testimonialTrack.parentElement.addEventListener('mouseleave', () => {
     autoScrollInterval = setInterval(() => {
       const cards = testimonialTrack.querySelectorAll('.testimonial-card');
-      const maxIndex = Math.max(0, cards.length - 1);
+      const wrapperWidth = testimonialTrack.parentElement.offsetWidth;
+      const cardWidth = cards.length > 0 ? cards[0].offsetWidth + 28 : 380;
+      const visibleCards = Math.max(1, Math.floor(wrapperWidth / cardWidth));
+      const maxIndex = Math.max(0, cards.length - visibleCards);
       testimonialIndex++;
       if (testimonialIndex > maxIndex) testimonialIndex = 0;
       updateTestimonialPosition();
@@ -908,11 +922,161 @@ if (newsletterForm) {
   });
 }
 
+// ============================================
+// RAZORPAY PAYMENT GATEWAY
+// ============================================
+const paymentOverlay = document.getElementById('paymentOverlay');
+
+function closePaymentModal() {
+  if (paymentOverlay) {
+    paymentOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
+function showPaymentSuccess(planName, amount, paymentId) {
+  document.getElementById('paymentSuccessTitle').textContent = 'Payment Successful!';
+  document.getElementById('paymentSuccessMsg').textContent = `Welcome to ${planName}! Your premium features are now active.`;
+  document.getElementById('paymentPlan').textContent = planName;
+  document.getElementById('paymentAmount').textContent = `₹${amount}`;
+  document.getElementById('paymentId').textContent = paymentId || 'DEMO-' + Date.now();
+
+  paymentOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+async function initPayment(planName, amount) {
+  const btn = document.querySelector(`[data-plan="${planName}"]`);
+  const originalText = btn.textContent;
+  btn.classList.add('loading');
+  btn.textContent = 'Processing';
+
+  try {
+    // Step 1: Create order on backend
+    const orderRes = await fetch(`${API_BASE}/api/create-order`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ planName, amount })
+    });
+    const orderData = await orderRes.json();
+    if (!orderRes.ok) throw new Error(orderData.error || 'Order creation failed');
+
+    const order = orderData.order;
+
+    // Demo mode — simulate payment success
+    if (orderData.demo) {
+      btn.classList.remove('loading');
+      btn.textContent = originalText;
+
+      // Simulate a short delay for realism
+      setTimeout(async () => {
+        // Verify demo payment
+        await fetch(`${API_BASE}/api/verify-payment`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            razorpay_order_id: order.id,
+            razorpay_payment_id: 'demo_pay_' + Date.now(),
+            razorpay_signature: 'demo_signature',
+            planName
+          })
+        });
+
+        showPaymentSuccess(planName, amount, 'DEMO-' + Date.now().toString(36).toUpperCase());
+      }, 800);
+      return;
+    }
+
+    // Step 2: Fetch Razorpay public key
+    const keyRes = await fetch(`${API_BASE}/api/razorpay-key`);
+    const keyData = await keyRes.json();
+
+    // Step 3: Open Razorpay Checkout
+    const options = {
+      key: keyData.key,
+      amount: order.amount,
+      currency: order.currency,
+      name: 'PawFinder',
+      description: `${planName} Subscription — Monthly`,
+      order_id: order.id,
+      image: '', // logo URL if available
+      handler: async function (response) {
+        // Step 4: Verify payment on backend
+        try {
+          const verifyRes = await fetch(`${API_BASE}/api/verify-payment`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
+              planName
+            })
+          });
+          const verifyData = await verifyRes.json();
+
+          if (verifyData.verified) {
+            showPaymentSuccess(planName, amount, response.razorpay_payment_id);
+          } else {
+            alert('Payment verification failed. Please contact support.');
+          }
+        } catch (err) {
+          console.error('Verification error:', err);
+          alert('Payment verification failed. Please contact support.');
+        }
+      },
+      prefill: {
+        name: currentUser ? `${currentUser.firstName || ''} ${currentUser.lastName || ''}`.trim() : '',
+        email: currentUser?.email || '',
+        contact: currentUser?.phone || ''
+      },
+      theme: {
+        color: '#14b8a6'
+      },
+      modal: {
+        ondismiss: function () {
+          console.log('Payment cancelled by user');
+        }
+      }
+    };
+
+    const rzp = new Razorpay(options);
+    rzp.on('payment.failed', function (response) {
+      console.error('Payment failed:', response.error);
+      alert(`Payment failed: ${response.error.description}`);
+    });
+    rzp.open();
+
+  } catch (err) {
+    console.error('Payment error:', err);
+    alert('Something went wrong. Please try again.');
+  } finally {
+    btn.classList.remove('loading');
+    btn.textContent = originalText;
+  }
+}
+
 // ---- Initialize ----
 document.addEventListener('DOMContentLoaded', () => {
   renderPets();
   observeElements();
   animateStats();
+
+  // ---- Subscription Plan Payment Buttons ----
+  const buyPawPlus = document.getElementById('buyPawPlus');
+  const buyPawPro = document.getElementById('buyPawPro');
+
+  if (buyPawPlus) {
+    buyPawPlus.addEventListener('click', () => {
+      initPayment('PawPlus', 299);
+    });
+  }
+
+  if (buyPawPro) {
+    buyPawPro.addEventListener('click', () => {
+      initPayment('PawPro', 599);
+    });
+  }
 
   // ---- Theme Toggle ----
   const themeToggle = document.getElementById('themeToggle');

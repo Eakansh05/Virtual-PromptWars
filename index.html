@@ -6,7 +6,7 @@
   <title>PawFinder — Meet Your New Bestie 🐾</title>
   <meta name="description" content="PawFinder connects you with rescue pets who are literally perfect. Browse adorable dogs, cats, birds & bunnies ready for their forever home.">
   <meta name="keywords" content="pet adoption, adopt a pet, dogs, cats, animal shelter, rescue pets">
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="styles.css?v=4">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='80' font-size='80'>🐾</text></svg>">
 </head>
 <body data-theme="dark">
@@ -315,7 +315,7 @@
             <li>✅ Early access to new listings</li>
             <li>✅ Profile badge ⭐</li>
           </ul>
-          <button class="plan-btn primary" onclick="alert('PawPlus subscription coming soon!')">Get PawPlus</button>
+          <button class="plan-btn primary" id="buyPawPlus" data-plan="PawPlus" data-amount="299">Get PawPlus →</button>
         </div>
         <div class="plan-card">
           <div class="plan-badge">Premium</div>
@@ -329,7 +329,7 @@
             <li>✅ Dedicated support agent</li>
             <li>✅ Premium badge 👑</li>
           </ul>
-          <button class="plan-btn" onclick="alert('PawPro subscription coming soon!')">Get PawPro</button>
+          <button class="plan-btn" id="buyPawPro" data-plan="PawPro" data-amount="599">Get PawPro →</button>
         </div>
       </div>
     </div>
@@ -777,6 +777,37 @@
     </div>
   </div>
 
-  <script src="script.js?v=3"></script>
+  <!-- ======== PAYMENT SUCCESS MODAL ======== -->
+  <div class="payment-overlay" id="paymentOverlay">
+    <div class="payment-modal">
+      <div class="payment-success-content">
+        <div class="payment-success-icon">🎉</div>
+        <h2 id="paymentSuccessTitle">Payment Successful!</h2>
+        <p id="paymentSuccessMsg">Welcome to PawPlus! Your premium features are now active.</p>
+        <div class="payment-details" id="paymentDetails">
+          <div class="payment-detail-row">
+            <span>Plan</span>
+            <span id="paymentPlan">PawPlus</span>
+          </div>
+          <div class="payment-detail-row">
+            <span>Amount Paid</span>
+            <span id="paymentAmount">₹299</span>
+          </div>
+          <div class="payment-detail-row">
+            <span>Payment ID</span>
+            <span id="paymentId">—</span>
+          </div>
+          <div class="payment-detail-row">
+            <span>Status</span>
+            <span class="payment-status-badge">✅ Verified</span>
+          </div>
+        </div>
+        <button class="form-btn" onclick="closePaymentModal()">Awesome, Let's Go! 🐾</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script src="script.js?v=4"></script>
 </body>
 </html>

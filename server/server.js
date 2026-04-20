@@ -49,6 +49,104 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'PawFinder API is running 🐾' });
 });
 
+// ============================================
+// RAZORPAY PAYMENT GATEWAY
+// ============================================
+const Razorpay = require('razorpay');
+const crypto = require('crypto');
+
+const RAZORPAY_KEY_ID = process.env.RAZORPAY_KEY_ID;
+const RAZORPAY_KEY_SECRET = process.env.RAZORPAY_KEY_SECRET;
+
+let razorpay = null;
+if (RAZORPAY_KEY_ID && RAZORPAY_KEY_SECRET && !RAZORPAY_KEY_ID.includes('YourKeyHere')) {
+  razorpay = new Razorpay({
+    key_id: RAZORPAY_KEY_ID,
+    key_secret: RAZORPAY_KEY_SECRET
+  });
+  console.log('💳 Razorpay payment gateway initialized (Test Mode)');
+} else {
+  console.log('⚠️  Razorpay keys not configured — payments will run in demo mode');
+}
+
+// Get Razorpay public key (safe to expose)
+app.get('/api/razorpay-key', (req, res) => {
+  res.json({ key: RAZORPAY_KEY_ID || null });
+});
+
+// Create Razorpay Order
+app.post('/api/create-order', async (req, res) => {
+  try {
+    const { planName, amount } = req.body;
+
+    if (!planName || !amount) {
+      return res.status(400).json({ error: 'Plan name and amount are required' });
+    }
+
+    // If Razorpay is not configured, return a demo order
+    if (!razorpay) {
+      const demoOrder = {
+        id: 'demo_order_' + Date.now(),
+        amount: amount * 100,
+        currency: 'INR',
+        receipt: `pawfinder_${planName}_${Date.now()}`,
+        status: 'created',
+        demo: true
+      };
+      console.log(`💳 [DEMO] Order created for ${planName}: ₹${amount}`);
+      return res.json({ order: demoOrder, demo: true });
+    }
+
+    const options = {
+      amount: amount * 100, // Razorpay expects paise (₹299 = 29900 paise)
+      currency: 'INR',
+      receipt: `pawfinder_${planName}_${Date.now()}`,
+      notes: {
+        plan: planName,
+        platform: 'PawFinder'
+      }
+    };
+
+    const order = await razorpay.orders.create(options);
+    console.log(`💳 Razorpay order created: ${order.id} for ${planName} (₹${amount})`);
+    res.json({ order, demo: false });
+  } catch (err) {
+    console.error('❌ Razorpay order creation failed:', err.message);
+    res.status(500).json({ error: 'Failed to create payment order' });
+  }
+});
+
+// Verify Razorpay Payment Signature
+app.post('/api/verify-payment', (req, res) => {
+  try {
+    const { razorpay_order_id, razorpay_payment_id, razorpay_signature, planName } = req.body;
+
+    // Demo mode verification
+    if (!razorpay || razorpay_order_id.startsWith('demo_')) {
+      console.log(`✅ [DEMO] Payment verified for ${planName}`);
+      return res.json({ verified: true, demo: true });
+    }
+
+    // Real signature verification
+    const body = razorpay_order_id + '|' + razorpay_payment_id;
+    const expectedSignature = crypto
+      .createHmac('sha256', RAZORPAY_KEY_SECRET)
+      .update(body)
+      .digest('hex');
+
+    if (expectedSignature === razorpay_signature) {
+      console.log(`✅ Payment verified: ${razorpay_payment_id} for ${planName}`);
+      res.json({ verified: true, paymentId: razorpay_payment_id });
+    } else {
+      console.error('❌ Payment signature verification failed');
+      res.status(400).json({ verified: false, error: 'Invalid payment signature' });
+    }
+  } catch (err) {
+    console.error('❌ Payment verification error:', err.message);
+    res.status(500).json({ error: 'Payment verification failed' });
+  }
+});
+
 // ---- USER SIGNUP ----
 app.post('/api/users/signup', async (req, res) => {
   try {
